@@ -104,8 +104,7 @@ Slow communication with kitchen staff
 
 ## UI Prototypes
 
-(To be created in Figma. Example screens: Login, Admin Dashboard, Menu Management, Waiter Order Page, Billing Page)
-
+https://www.figma.com/design/8XWfa8PU1CdaMLWr8up5Bn/Ravintola-wireframe?node-id=0-1&t=NGAGwxUYnoWr7bHA-1
 
 ---
 
