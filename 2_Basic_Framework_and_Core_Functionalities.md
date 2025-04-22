@@ -56,6 +56,7 @@ The database uses **PostgreSQL**, managed through Sequelize ORM, and structured 
 - **Security**: Parameterized queries via ORM to prevent SQL injection  
 
 ## 5. Project Structure
+```
 Restaurant-Ordering-System/
 ├── client/                     # React frontend
 │   ├── public/
@@ -70,7 +71,7 @@ Restaurant-Ordering-System/
 │   ├── routes/                 # API endpoints
 │   └── server.js
 └── README.md
-
+```
 
 
 
