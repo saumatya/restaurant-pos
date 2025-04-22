@@ -1,3 +1,78 @@
+# Project Phase 2 – Basic Structure and Core Functionalities
+
+In this phase, the focus was on laying down a robust foundation for the restaurant management system. The project introduces core features such as menu browsing, order management, and admin functionalities. With a scalable architecture using Node.js, React, and PostgreSQL, the system is being developed with modularity, maintainability, and scalability in mind.
+
+## 1. Environment
+
+The development environment is designed for both local and cloud deployments, with scalability and developer productivity in mind:
+
+- **Frontend**: React.js (CRA), ready for deployment to Azure  
+- **Backend**: Node.js with Express  
+- **Database**: PostgreSQL via Sequelize ORM  
+- **Version Control**: GitHub  
+- **Dev Tools**: Visual Studio Code, Postman, Swagger UI, Browser DevTools  
+
+## 2. Backend
+
+The backend is built with **Node.js** and **Express.js**, structured for clean separation of concerns and RESTful API architecture.
+
+- **Structure**: Organized into `controllers`, `models`, `routes`, and `migrations`  
+- **ORM**: Sequelize used to define entities, relationships, and perform migrations  
+- **Functionality**:
+  - CRUD for menu and order management
+  - Order placement, item addition/removal
+  - Automatic total calculation on order  
+- **Error Handling**: `try/catch` blocks with meaningful HTTP status responses  
+- **API Testing**: Manual via Postman; documented with Swagger  
+- **Security**: CORS policy enabled to support frontend communication  
+
+## 3. Frontend
+
+The frontend is built with **React.js**, delivering an interactive and modern UI for customers and admins.
+
+- **Structure**:
+  - `components/` – Reusable UI elements (e.g., MenuItem, OrderItem)
+  - `pages/` – Pages for menu view, order form, admin panel  
+  - `App.jsx` – App-level routing and layout  
+- **API Interaction**: Axios for REST API communication  
+- **UI Behavior**:
+  - Displays menu items from backend
+  - Allows adding/removing items from an order  
+  - Shows total cost in real time  
+- **Debugging**: `console.log`, alerts, browser network tab used during development  
+
+## 4. Database
+
+The database uses **PostgreSQL**, managed through Sequelize ORM, and structured with normalized entities and relationships.
+
+- **Entities**:
+  - `menus` – Menu items with name, price, availability  
+  - `orders` – Orders with timestamp, status, and total cost  
+  - `order_items` – Many-to-many relation between orders and menu items  
+- **Relationships**:
+  - One `order` can have many `order_items`
+  - Each `order_item` is linked to one `menu` item  
+- **Migrations**: Sequelize CLI used to create and manage schema changes  
+- **Security**: Parameterized queries via ORM to prevent SQL injection  
+
+## 5. Project Structure
+Restaurant-Ordering-System/
+├── client/                     # React frontend
+│   ├── public/
+│   └── src/
+│       ├── components/         # MenuItem, OrderList, etc.
+│       ├── pages/              # Home, Admin, OrderPage
+│       └── App.jsx
+├── server/                     # Express backend
+│   ├── controllers/            # Business logic
+│   ├── models/                 # Sequelize models
+│   ├── migrations/             # DB migrations
+│   ├── routes/                 # API endpoints
+│   └── server.js
+└── README.md
+
+
+
 
 ## 6. Functionalities
 
