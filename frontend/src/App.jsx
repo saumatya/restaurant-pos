@@ -36,9 +36,9 @@
 
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import MenuPage from "./pages/MenuPage";
-import OrderPage from "./pages/OrderPage";
+import Home from "./pages/Home.jsx";
+import MenuPage from "./pages/MenuPage.jsx";
+import OrderPage from "./pages/OrderPage.jsx";
 
 function App() {
   return (
