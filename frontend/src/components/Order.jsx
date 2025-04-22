@@ -38,19 +38,28 @@ const Order = () => {
     setRate(selectedItem.rate);
   };
 
+
   const handleSubmit = async () => {
+    if (!orderDate) {
+      console.error("Order date is required");
+      return;
+    }
+  
     const orderData = {
-      order_date: orderDate,
+      order_date: new Date(orderDate).toISOString(),
       items: orderItems,
     };
-
+  
     try {
-      const response = await api.post("/order", orderData);
+      const response = await api.post("http://localhost:3000/order", orderData);
       console.log("Order created:", response.data);
     } catch (error) {
       console.error("Error creating order:", error);
     }
   };
+  
+  
+    
 
   return (
     <div>
