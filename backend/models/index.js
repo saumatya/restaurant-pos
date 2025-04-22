@@ -1,3 +1,4 @@
+// models/index.js
 const { Sequelize } = require("sequelize");
 const config = require("../config/config").development;
 
@@ -18,9 +19,15 @@ db.sequelize = sequelize;
 // Import models
 db.Menu = require("./menu")(sequelize, Sequelize);
 db.Order = require("./order")(sequelize, Sequelize);
+db.OrderItem = require("./orderItem")(sequelize, Sequelize);
 
 // Associations
-db.Order.belongsToMany(db.Menu, { through: "order_items" });
-db.Menu.belongsToMany(db.Order, { through: "order_items" });
+db.Order.belongsToMany(db.Menu, { through: db.OrderItem });
+db.Menu.belongsToMany(db.Order, { through: db.OrderItem });
+
+db.Order.hasMany(db.OrderItem);
+db.Menu.hasMany(db.OrderItem);
+db.OrderItem.belongsTo(db.Order);
+db.OrderItem.belongsTo(db.Menu);
 
 module.exports = db;

@@ -1,34 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const { Menu } = require("../models");
+const menuController = require("../controllers/menuController");
 
-// GET /menu – List all menu items
-router.get("/", async (req, res) => {
-  const items = await Menu.findAll();
-  res.json(items);
-});
+// Get all menu items
+router.get("/", menuController.getAllMenuItems);
 
-// POST /menu – Create new menu item
-router.post("/", async (req, res) => {
-  const newItem = await Menu.create(req.body);
-  res.status(201).json(newItem);
-});
+// Create a new menu item
+router.post("/", menuController.createMenuItem);
 
-// PUT /menu/:id – Update menu item
-router.put("/:id", async (req, res) => {
-  const item = await Menu.findByPk(req.params.id);
-  if (!item) return res.status(404).json({ error: "Item not found" });
+// Update a menu item
+router.put("/:menuid", menuController.updateMenuItem);
 
-  await item.update(req.body);
-  res.json(item);
-});
-
-// DELETE /menu/:id – Delete menu item
-router.delete("/:id", async (req, res) => {
-  const rowsDeleted = await Menu.destroy({ where: { menuid: req.params.id } });
-  if (rowsDeleted === 0)
-    return res.status(404).json({ error: "Item not found" });
-  res.status(204).send();
-});
+// Delete a menu item
+router.delete("/:menuid", menuController.deleteMenuItem);
 
 module.exports = router;

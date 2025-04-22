@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define(
+  const Menu = sequelize.define(
     "Menu",
     {
       menuid: {
@@ -17,4 +17,11 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
     }
   );
+
+  // Define the many-to-many relationship with Order through OrderItem
+  Menu.associate = function (models) {
+    Menu.belongsToMany(models.Order, { through: models.OrderItem });
+  };
+
+  return Menu;
 };
