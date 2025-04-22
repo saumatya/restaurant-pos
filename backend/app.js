@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors"); // Import cors
 const app = express();
 const db = require("./models");
 
@@ -8,6 +9,14 @@ const orderRoutes = require("./routes/order");
 
 // Middleware setup
 app.use(express.json());
+//handle cors
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Allow only this origin
+    methods: "GET,POST", // Allow only these methods
+    allowedHeaders: "Content-Type,Authorization", // Allow only these headers
+  })
+);
 
 // Use routes
 app.use("/menu", menuRoutes);

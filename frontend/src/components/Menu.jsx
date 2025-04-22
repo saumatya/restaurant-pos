@@ -8,7 +8,7 @@ const Menu = () => {
     // Fetch menu items from the backend
     const fetchMenu = async () => {
       try {
-        const response = await api.get("/menu");
+        const response = await api.get("http://localhost:3000/menu");
         setMenu(response.data);
       } catch (error) {
         console.error("Error fetching menu:", error);
